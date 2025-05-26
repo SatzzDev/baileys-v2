@@ -103,7 +103,7 @@ Baileys menyediakan beberapa fungsi utilitas penting yang sangat membantu saat m
   ```
 
 > [!NOTE]  
-> Sebagian besar fungsi utilitas tidak dipanggil otomatis — Kamu harus menggunakannya sesuai kebutuhan, terutama saat menangani pesan media, format jid, atau decrypt konten.
+> Sebagian besar fungsi utilitas tidak dipanggil otomatis — Kamu harus menggunakannya sesuai kebutuhan, terutama saat menangani pesan media, format m.chat, atau decrypt konten.
 
 ## Mengirim Pesan
 
@@ -118,26 +118,26 @@ const jid = '628XXXXXXXXX@s.whatsapp.net' // tujuan
 const content = { text: 'Halo, ini pesan dari bot!' } // isi pesan
 const options = { quoted: null } // opsi tambahan (misalnya: balasan)
 
-await miya.sendMessage(jid, content, options)
+await miya.sendMessage(m.chat, content, options)
 ```
 
 ### Pesan Non-Media
 
 #### Pesan Teks
 ```javascript
-await miya.sendMessage(jid, { text: 'Halo dunia' })
+await miya.sendMessage(m.chat, { text: 'Halo dunia' })
 ```
 
 #### Pesan Balasan (Quote)
 ```javascript
-await miya.sendMessage(jid, { text: 'Ini balasan pesan kamu' }, { quoted: message })
+await miya.sendMessage(m.chat, { text: 'Ini balasan pesan kamu' }, { quoted: message })
 ```
 
 #### Mention Pengguna (Tag)
 Gunakan `@nomor` dalam teks dan sertakan `mentions` di payload.
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     text: '@628XXXXXXXXX Hai Satzz!',
     mentions: ['628XXXXXXXXX@s.whatsapp.net']
@@ -149,14 +149,14 @@ await miya.sendMessage(
 Butuh objek pesan (`WAMessage`). Bisa didapat dari store atau pesan sebelumnya.
 ```javascript
 const msg = getMessageFromStore() // Kamu buat sendiri sesuai struktur
-await miya.sendMessage(jid, { forward: msg, force: true })
+await miya.sendMessage(m.chat, { forward: msg, force: true })
 ```
 
 ### Pesan Interaktif
 
 #### Tombol Teks (Buttons)
 ```javascript
-await miya.sendMessage(jid, {
+await miya.sendMessage(m.chat, {
   text: 'Pilih salah satu:',
   buttons: [
     { buttonId: 'btn_1', buttonText: { displayText: 'Tombol 1' }, type: 1 },
@@ -168,7 +168,7 @@ await miya.sendMessage(jid, {
 
 #### Daftar (List Message)
 ```javascript
-await miya.sendMessage(jid, {
+await miya.sendMessage(m.chat, {
   text: 'Pilih dari daftar berikut:',
   footer: 'Contoh footer',
   title: 'Judul Daftar',
@@ -197,7 +197,7 @@ await miya.sendMessage(jid, {
 #### Lokasi Biasa
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     location: {
       degreesLatitude: -6.200000,
@@ -210,7 +210,7 @@ await miya.sendMessage(
 #### Lokasi Langsung (Live Location)
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     location: {
       degreesLatitude: -6.200000,
@@ -232,7 +232,7 @@ const vcard =
   'END:VCARD'
 
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     contacts: {
       displayName: 'Satzz Izumi',
@@ -249,7 +249,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     react: {
       text: '🔥', // gunakan string kosong '' untuk menghapus reaksi
@@ -272,7 +272,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     pin: {
       type: 1, // 1 untuk pin, 2 untuk unpin
@@ -289,7 +289,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     keep: {
       key: message.key,
@@ -305,7 +305,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     poll: {
       name: 'Polling Hari Ini',
@@ -323,7 +323,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     pollResult: {
       name: 'Hasil Polling',
@@ -343,7 +343,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     call: {
       name: 'Hay',
@@ -359,7 +359,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     event: {
       isCanceled: false, // true jika dibatalkan
@@ -384,7 +384,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     order: {
       orderId: '574XXX',
@@ -409,7 +409,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     product: {
       productImage: { 
@@ -438,7 +438,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     payment: {
       note: 'Hi!',
@@ -463,7 +463,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid, 
+  m.chat, 
   { 
     paymentInvite: {
       type: 1, // 1 = request, 2 = accept, 3 = decline (sesuaikan sesuai konteks)
@@ -479,7 +479,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     adminInvite: {
       jid: '123xxx@newsletter',
@@ -498,7 +498,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     groupInvite: {
       jid: '123xxx@g.us',
@@ -518,7 +518,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     sharePhoneNumber: {}
   }
@@ -531,7 +531,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     requestPhoneNumber: {}
   }
@@ -545,7 +545,7 @@ await miya.sendMessage(
 #### Tombol Tipe List
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     buttonReply: {
       name: 'Hai', 
@@ -560,7 +560,7 @@ await miya.sendMessage(
 #### Tombol Tipe Plain
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     buttonReply: {
       displayText: 'Halo', 
@@ -574,7 +574,7 @@ await miya.sendMessage(
 #### Tombol Tipe Template
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     buttonReply: {
       displayText: 'Pilih Saya', 
@@ -589,7 +589,7 @@ await miya.sendMessage(
 #### Tombol Tipe Interactive (Native Flow)
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     buttonReply: {
       body: 'Mau pilih yang mana?', 
@@ -610,7 +610,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     text: 'Ini adalah pesan tombol!',
     caption: 'Gunakan jika memakai gambar/video',
@@ -639,7 +639,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     text: 'Ini adalah daftar pilihan!',
     footer: 'Dipersembahkan oleh Satzz Izumi',
@@ -672,7 +672,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     text: 'Ini adalah daftar produk!',
     footer: 'Dikirim oleh Satzz Izumi',
@@ -699,7 +699,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     text: 'Isi Utama Pesan',
     title: 'Judul Utama',
@@ -762,7 +762,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     text: 'Ini adalah pesan template tombol!',
     footer: 'Dikirim oleh Satzz Izumi',
@@ -799,7 +799,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     text: 'Ini pesan interaktif!',
     title: 'Hai!',
@@ -871,7 +871,7 @@ await miya.sendMessage(
 ##### Gambar
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     image: { url: 'https://example.jpg' },
     caption: 'Isi Pesan',
@@ -887,7 +887,7 @@ await miya.sendMessage(
 ##### Video
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     video: { url: 'https://example.mp4' },
     caption: 'Isi Video',
@@ -903,7 +903,7 @@ await miya.sendMessage(
 ##### Dokumen
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     document: { url: 'https://example.jpg' },
     mimetype: 'image/jpeg',
@@ -921,7 +921,7 @@ await miya.sendMessage(
 ##### Lokasi
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     location: {
       degreesLatitude: -6.2,
@@ -941,7 +941,7 @@ await miya.sendMessage(
 ##### Produk
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     product: {
       productImage: { url: 'https://example.jpg' },
@@ -971,7 +971,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendStatusMentions(
-  jid, 
+  m.chat, 
   {
     image: {
       url: 'https://example.com.jpg'
@@ -987,7 +987,7 @@ await miya.sendStatusMentions(
 
 ```javascript
 await miya.sendAlbumMessage(
-  jid,
+  m.chat,
   [
     {
       image: { url: 'https://example.jpg' }, 
@@ -1020,7 +1020,7 @@ await miya.sendAlbumMessage(
 #### Teks Saja
 ```javascript
 await miya.sendMessage(
-  jid, 
+  m.chat, 
   {      
     text: 'Body pesan',
     title: 'Judul Toko', 
@@ -1038,7 +1038,7 @@ await miya.sendMessage(
 #### Gambar
 ```javascript
 await miya.sendMessage(
-  jid, 
+  m.chat, 
   { 
     image: { url: 'https://example.jpg' },
     caption: 'Deskripsi produk',
@@ -1058,7 +1058,7 @@ await miya.sendMessage(
 #### Video
 ```javascript
 await miya.sendMessage(
-  jid, 
+  m.chat, 
   { 
     video: { url: 'https://example.mp4' },
     caption: 'Tonton videonya!',
@@ -1078,7 +1078,7 @@ await miya.sendMessage(
 #### Dokumen
 ```javascript
 await miya.sendMessage(
-  jid, 
+  m.chat, 
   {
     document: { url: 'https://example.jpg' },
     mimetype: 'image/jpeg',
@@ -1100,7 +1100,7 @@ await miya.sendMessage(
 #### Lokasi
 ```javascript
 await miya.sendMessage(
-  jid, 
+  m.chat, 
   { 
     location: {
       degreesLatitude: -6.2000, 
@@ -1124,7 +1124,7 @@ await miya.sendMessage(
 #### Produk
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     product: {
       productImage: { url: 'https://example.jpg' },
@@ -1159,7 +1159,7 @@ await miya.sendMessage(
 #### Teks Saja
 ```javascript
 await miya.sendMessage(
-  jid, 
+  m.chat, 
   {
     text: 'Isi pesan',
     title: 'Judul Koleksi',
@@ -1178,7 +1178,7 @@ await miya.sendMessage(
 #### Gambar
 ```javascript
 await miya.sendMessage(
-  jid, 
+  m.chat, 
   { 
     image: { url: 'https://example.jpg' },
     caption: 'Koleksi Gambar',
@@ -1199,7 +1199,7 @@ await miya.sendMessage(
 #### Video
 ```javascript
 await miya.sendMessage(
-  jid, 
+  m.chat, 
   {
     video: { url: 'https://example.mp4' },
     caption: 'Koleksi Video',
@@ -1220,7 +1220,7 @@ await miya.sendMessage(
 #### Dokumen
 ```javascript
 await miya.sendMessage(
-  jid, 
+  m.chat, 
   {
     document: { url: 'https://example.jpg' },
     mimetype: 'image/jpeg',
@@ -1243,7 +1243,7 @@ await miya.sendMessage(
 #### Lokasi
 ```javascript
 await miya.sendMessage(
-  jid, 
+  m.chat, 
   {
     location: {
       degreesLatitude: -6.2, 
@@ -1268,7 +1268,7 @@ await miya.sendMessage(
 #### Produk
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     product: {
       productImage: { url: 'https://example.jpg' },
@@ -1308,7 +1308,7 @@ await miya.sendMessage(
 4. Contoh kirim pesan dengan pratinjau link:
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     text: 'Hai! Ini dikirim dari https://github.com/whiskeysockets/baileys'
   }
@@ -1332,7 +1332,7 @@ Mengirim media (gambar, video, audio, stiker) jauh lebih efisien dengan Baileys.
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     video: fs.readFileSync('Media/ma_gif.mp4'),
     caption: 'Halo dari GIF!',
@@ -1344,7 +1344,7 @@ await miya.sendMessage(
 #### Pesan Video
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     video: { url: './Media/ma_video.mp4' },
     caption: 'Ini videonya'
@@ -1356,7 +1356,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     video: { url: './Media/ma_video.mp4' },
     ptv: true
@@ -1374,7 +1374,7 @@ ffmpeg -i input.mp4 -avoid_negative_ts make_zero -ac 1 output.ogg
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     audio: { url: './Media/audio.ogg' },
     mimetype: 'audio/ogg; codecs=opus'
@@ -1386,7 +1386,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     image: { url: './Media/ma_img.png' },
     caption: 'Halo dari gambar!'
@@ -1400,7 +1400,7 @@ await miya.sendMessage(
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     image: { url: './Media/ma_img.png' },
     viewOnce: true,
@@ -1416,8 +1416,8 @@ await miya.sendMessage(
 - Digunakan untuk menarik pesan yang sudah dikirim (delete for everyone).
 
 ```javascript
-const msg = await miya.sendMessage(jid, { text: 'Halo dunia' })
-await miya.sendMessage(jid, { delete: msg.key })
+const msg = await miya.sendMessage(m.chat, { text: 'Halo dunia' })
+await miya.sendMessage(m.chat, { delete: msg.key })
 ```
 
 > **Catatan:**  
@@ -1428,7 +1428,7 @@ await miya.sendMessage(jid, { delete: msg.key })
 - Kamu dapat mengedit isi pesan yang telah dikirim sebelumnya, selama masih berada dalam konteks yang diizinkan oleh WhatsApp.
 
 ```javascript
-await miya.sendMessage(jid, {
+await miya.sendMessage(m.chat, {
   text: 'Teks yang sudah diperbarui di sini',
   edit: response.key
 })
@@ -1645,7 +1645,7 @@ await miya.chatModify({
 #### Aktifkan
 
 ```javascript
-await miya.sendMessage(jid, {
+await miya.sendMessage(m.chat, {
   disappearingMessagesInChat: 604800 // 7 hari
 })
 ```
@@ -1654,7 +1654,7 @@ await miya.sendMessage(jid, {
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   { text: 'halo' },
   { ephemeralExpiration: 604800 }
 )
@@ -1663,14 +1663,14 @@ await miya.sendMessage(
 #### Nonaktifkan
 
 ```javascript
-await miya.sendMessage(jid, {
+await miya.sendMessage(m.chat, {
   disappearingMessagesInChat: false
 })
 ```
 
 ### Menghapus Pesan Tertentu (Clear Messages)
 ```javascript
-await miya.clearMessage(jid, key, timestamps)
+await miya.clearMessage(m.chat, key, timestamps)
 ```
 
 ## Query Pengguna (User Queries)
@@ -1746,7 +1746,7 @@ await miya.updateProfileName('Satzz Izumi')
 > `{ url }`, `Buffer`, atau `{ stream }`
 
 ```javascript
-await miya.updateProfilePicture(jid, { url: './foto-baru.jpeg' })
+await miya.updateProfilePicture(m.chat, { url: './foto-baru.jpeg' })
 ```
 
 ### Hapus Foto Profil (termasuk grup)
@@ -1771,7 +1771,7 @@ await miya.sendMessage(group.id, { text: 'Halo semuanya!' })
 
 ```javascript
 await miya.groupParticipantsUpdate(
-  jid,
+  m.chat,
   ['abcd@s.whatsapp.net', 'efgh@s.whatsapp.net'],
   'add' // bisa diganti: 'remove', 'promote', 'demote'
 )
@@ -1780,29 +1780,29 @@ await miya.groupParticipantsUpdate(
 ### Ubah Nama Grup
 
 ```javascript
-await miya.groupUpdateSubject(jid, 'Nama Baru Grup!')
+await miya.groupUpdateSubject(m.chat, 'Nama Baru Grup!')
 ```
 
 ### Ubah Deskripsi Grup
 
 ```javascript
-await miya.groupUpdateDescription(jid, 'Deskripsi baru untuk grup ini')
+await miya.groupUpdateDescription(m.chat, 'Deskripsi baru untuk grup ini')
 ```
 
 ### Ubah Pengaturan Grup
 
 ```javascript
 // hanya admin yang bisa kirim pesan
-await miya.groupSettingUpdate(jid, 'announcement')
+await miya.groupSettingUpdate(m.chat, 'announcement')
 
 // semua anggota bisa kirim pesan
-await miya.groupSettingUpdate(jid, 'not_announcement')
+await miya.groupSettingUpdate(m.chat, 'not_announcement')
 
 // semua anggota bisa ubah info grup (foto, nama, dll.)
-await miya.groupSettingUpdate(jid, 'unlocked')
+await miya.groupSettingUpdate(m.chat, 'unlocked')
 
 // hanya admin yang bisa ubah info grup
-await miya.groupSettingUpdate(jid, 'locked')
+await miya.groupSettingUpdate(m.chat, 'locked')
 ```
 
 ### Keluar dari Grup
@@ -1850,7 +1850,7 @@ console.log(metadata.id + ', Nama: ' + metadata.subject + ', Deskripsi: ' + meta
 ### Gabung Grup dari `groupInviteMessage`
 
 ```javascript
-let response = await miya.groupAcceptInviteV4(jid, groupInviteMessage)
+let response = await miya.groupAcceptInviteV4(m.chat, groupInviteMessage)
 console.log('Gabung ke grup: ' + response)
 ```
 
@@ -1865,7 +1865,7 @@ console.log(response)
 
 ```javascript
 let response = await miya.groupRequestParticipantsUpdate(
-  jid,
+  m.chat,
   ['abcd@s.whatsapp.net', 'efgh@s.whatsapp.net'],
   'approve' // atau 'reject'
 )
@@ -1889,14 +1889,14 @@ console.log(allGroups)
 | 90 Hari   | 7776000          |
 
 ```javascript
-await miya.groupToggleEphemeral(jid, 86400) // contoh: aktif 1 hari
+await miya.groupToggleEphemeral(m.chat, 86400) // contoh: aktif 1 hari
 ```
 
 ### Ubah Mode Penambahan Anggota Grup
 
 ```javascript
 await miya.groupMemberAddMode(
-  jid,
+  m.chat,
   'all_member_add' // atau 'admin_add'
 )
 ```
@@ -1906,8 +1906,8 @@ await miya.groupMemberAddMode(
 ### Blokir / Buka Blokir Pengguna
 
 ```javascript
-await miya.updateBlockStatus(jid, 'block') // Blokir pengguna
-await miya.updateBlockStatus(jid, 'unblock') // Buka blokir pengguna
+await miya.updateBlockStatus(m.chat, 'block') // Blokir pengguna
+await miya.updateBlockStatus(m.chat, 'unblock') // Buka blokir pengguna
 ```
 
 ### Ambil Pengaturan Privasi
@@ -2064,7 +2064,7 @@ await miya.sendMessage(id, { text: "Hello World", ai: true })
 
 ```javascript
 await miya.sendMessage(
-  jid,
+  m.chat,
   {
     image: {
       url: url
