@@ -226,7 +226,7 @@ await miya.sendMessage(
 const vcard =
   'BEGIN:VCARD\n' +
   'VERSION:3.0\n' +
-  'FN:Satzz Izumi\n' +
+  'FN:SatzzDev\n' +
   'ORG:ZERO DEV;\n' +
   'TEL;type=CELL;type=VOICE;waid=628XXXXXXXXX:+62 831-4366-3697\n' +
   'END:VCARD'
@@ -235,7 +235,7 @@ await miya.sendMessage(
   m.chat,
   {
     contacts: {
-      displayName: 'Satzz Izumi',
+      displayName: 'SatzzDev',
       contacts: [{ vcard }]
     }
   }
@@ -614,7 +614,7 @@ await miya.sendMessage(
   {
     text: 'Ini adalah pesan tombol!',
     caption: 'Gunakan jika memakai gambar/video',
-    footer: 'Salam dari Satzz Izumi!',
+    footer: 'Salam dari SatzzDev!',
     buttons: [
       { 
         buttonId: 'btn1', 
@@ -642,7 +642,7 @@ await miya.sendMessage(
   m.chat,
   {
     text: 'Ini adalah daftar pilihan!',
-    footer: 'Dipersembahkan oleh Satzz Izumi',
+    footer: 'Dipersembahkan oleh SatzzDev',
     title: 'Judul Daftar Pilihan',
     buttonText: 'Klik untuk melihat opsi',
     sections: [
@@ -675,7 +675,7 @@ await miya.sendMessage(
   m.chat,
   {
     text: 'Ini adalah daftar produk!',
-    footer: 'Dikirim oleh Satzz Izumi',
+    footer: 'Dikirim oleh SatzzDev',
     title: 'Pilih Produk Unggulan',
     buttonText: 'Lihat Daftar Produk',
     productList: [
@@ -765,7 +765,7 @@ await miya.sendMessage(
   m.chat,
   {
     text: 'Ini adalah pesan template tombol!',
-    footer: 'Dikirim oleh Satzz Izumi',
+    footer: 'Dikirim oleh SatzzDev',
     templateButtons: [
       {
         index: 1,
@@ -804,7 +804,7 @@ await miya.sendMessage(
     text: 'Ini pesan interaktif!',
     title: 'Hai!',
     subtitle: 'Subjudul di sini',
-    footer: 'Dikirim oleh Satzz Izumi',
+    footer: 'Dikirim oleh SatzzDev',
     interactiveButtons: [
       {
         name: 'quick_reply',
@@ -1164,7 +1164,7 @@ await miya.sendMessage(
     text: 'Isi pesan',
     title: 'Judul Koleksi',
     subtitle: 'Subjudul',
-    footer: 'Dari Satzz Izumi',
+    footer: 'Dari SatzzDev',
     collection: {
       bizJid: '628xxx@s.whatsapp.net', 
       id: 'https://example.com', 
@@ -1737,7 +1737,7 @@ await miya.updateProfileStatus('Halo Dunia!')
 ### Ubah Nama Profil
 
 ```javascript
-await miya.updateProfileName('Satzz Izumi')
+await miya.updateProfileName('SatzzDev')
 ```
 
 ### Ubah Foto Profil (termasuk grup)
