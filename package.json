@@ -1,17 +1,17 @@
 {
-  "name": "naruyaizumi",
+  "name": "satzzdev",
   "version": "25.9.2",
   "description": "baileys whatsapp-api",
   "keywords": [
     "whatsapp",
     "baileys"
   ],
-  "homepage": "https://github.com/naruyaizumi/baileys",
+  "homepage": "https://github.com/SatzzDev/baileys-v2",
   "repository": {
-    "url": "https://github.com/naruyaizumi/baileys"
+    "url": "https://github.com/SatzzDev/baileys-v2"
   },
   "license": "MIT",
-  "author": "Naruya Izumi",
+  "author": "SatzzDev",
   "main": "lib/index.js",
   "files": [
     "lib/*",
@@ -50,6 +50,6 @@
     "lib": "lib"
   },
   "bugs": {
-    "url": "https://github.com/naruyaizumi/baileys/issues"
+    "url": "https://github.com/SatzzDev/baileys-v2/issues"
   }
 }
