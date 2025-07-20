@@ -28,6 +28,7 @@
     "async-mutex": "^0.5.0",
     "audio-decode": "^2.2.2",
     "axios": "^1.9.0",
+    "fflate": "^0.8.2",
     "cache-manager": "^6.4.3",
     "jimp": "^1.6.0",
     "libsignal": "npm:@meta.inc/libsignal",
